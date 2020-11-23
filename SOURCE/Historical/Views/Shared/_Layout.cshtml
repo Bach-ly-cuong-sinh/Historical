@@ -58,23 +58,22 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="Home/Index">Home</a></li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="projects.html">Projects</a></li>
+                                                <li>@Html.ActionLink("Home","Index","Home")</li>
+                                                <li>@Html.ActionLink("List","Index","List")</li>
+                                                <li>@Html.ActionLink("Project", "Index", "Project")</li>
                                                 <li>
-                                                    <a href="/Blog/Index">Blog</a>
-                                                    <ul class="submenu">
+                                                    @Html.ActionLink("Blog", "Index", "Blog")
+                                                    @*<ul class="submenu">
                                                         <li><a href="/Blog/Index">Blog</a></li>
                                                         <li><a href="/Blog/Detail">Blog Details</a></li>
                                                         <li><a href="elements.html">Element</a></li>
-                                                    </ul>
+                                                    </ul>*@
                                                 </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li>@Html.ActionLink("Contact US", "Index", "Contactus")</li>
                                                 <!-- Header btn -->
                                                 <li>
                                                     <div class="header-right-btn ml-40">
-                                                        <a href="#" class="btn"><img src="~/img/icon/smartphone.svg" alt="">(10) 892-293 2678</a>
+                                                        <a href="" class="btn"><img src="~/img/icon/smartphone.svg" alt="">(84) 378-990 728</a>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -94,7 +93,9 @@
         <!-- Header End -->
     </header>
     <div>
-        @RenderBody()
+        <main>
+            @RenderBody()
+        </main>
     </div>
     
     <footer>
@@ -234,3 +235,6 @@
 
 </body>
 </html>
+<script type="text/javascript">
+
+</script>
