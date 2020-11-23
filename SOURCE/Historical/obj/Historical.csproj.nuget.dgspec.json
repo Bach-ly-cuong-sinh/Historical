@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ASPDOTNETCORE\\Historical\\Historical\\Historical.csproj": {}
+    "F:\\Students\\Historical\\SOURCE\\Historical\\Historical.csproj": {}
   },
   "projects": {
-    "E:\\ASPDOTNETCORE\\Historical\\Historical\\Historical.csproj": {
+    "F:\\Students\\Historical\\SOURCE\\Historical\\Historical.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ASPDOTNETCORE\\Historical\\Historical\\Historical.csproj",
+        "projectUniqueName": "F:\\Students\\Historical\\SOURCE\\Historical\\Historical.csproj",
         "projectName": "Historical",
-        "projectPath": "E:\\ASPDOTNETCORE\\Historical\\Historical\\Historical.csproj",
-        "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "E:\\ASPDOTNETCORE\\Historical\\Historical\\obj\\",
+        "projectPath": "F:\\Students\\Historical\\SOURCE\\Historical\\Historical.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "F:\\Students\\Historical\\SOURCE\\Historical\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,6 +78,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -83,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
         }
       }
     }
