@@ -26,5 +26,5 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
-SOURCE\Historical\obj
-SOURCE\Historical\bin
+SOURCE/Historical/obj
+SOURCE/Historical/bin
