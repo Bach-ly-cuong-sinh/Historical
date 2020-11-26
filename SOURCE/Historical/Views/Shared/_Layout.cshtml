@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 </head>
 
 <body>
@@ -99,7 +101,7 @@
     </div>
     
     <footer>
-        <div class="footer-wrapper section-bg2" data-background="~/img/gallery/footer-bg.png">
+        <div class="footer-wrapper section-bg2" style="background-image: url('/img/gallery/footer-bg.png');" >
             <!-- Footer Start-->
             <div class="footer-area footer-padding">
                 <div class="container">
@@ -109,14 +111,14 @@
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
                                     <div class="footer-logo mb-35">
-                                        <a href="index.html"><img src="~/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="Home"><img src="/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                     <div class="footer-tittle">
                                         <div class="footer-pera">
                                             <p>Duis aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug.</p>
                                         </div>
                                         <ul class="mb-40">
-                                            <li class="number"><a href="#">(80) 783 367-3904</a></li>
+                                            <li class="number"><a href="#">(84) 378 990 728</a></li>
                                             <li class="number2"><a href="#">contact@carwash.com</a></li>
                                         </ul>
                                     </div>
@@ -128,11 +130,11 @@
                                 <div class="footer-tittle">
                                     <h4>Navigation</h4>
                                     <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("List", "Index", "List")</li>
+                                        <li>@Html.ActionLink("Project", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
+                                        <li>@Html.ActionLink("Contact US", "Index", "Contactus")</li>
                                     </ul>
                                 </div>
                             </div>
