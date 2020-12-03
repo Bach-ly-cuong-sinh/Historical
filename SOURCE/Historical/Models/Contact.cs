@@ -5,12 +5,13 @@ using System.Collections.Generic;
 
 namespace Historical.Model
 {
-    public partial class User
+    public partial class Contact
     {
         public int Id { get; set; }
+        public string Content { get; set; }
+        public string Email { get; set; }
         public string Name { get; set; }
         public int IsActive { get; set; }
-        public string Password { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }
