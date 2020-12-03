@@ -245,3 +245,4 @@ E:\ASPDOTNETCORE\Historical\SOURCE\Historical\obj\Debug\netcoreapp3.1\Historical
 E:\ASPDOTNETCORE\Historical\SOURCE\Historical\obj\Debug\netcoreapp3.1\Historical.dll
 E:\ASPDOTNETCORE\Historical\SOURCE\Historical\obj\Debug\netcoreapp3.1\Historical.pdb
 E:\ASPDOTNETCORE\Historical\SOURCE\Historical\obj\Debug\netcoreapp3.1\Historical.genruntimeconfig.cache
+E:\ASPDOTNETCORE\Historical\SOURCE\Historical\obj\Debug\netcoreapp3.1\Razor\Views\BackEndHome\Index.cshtml.g.cs
