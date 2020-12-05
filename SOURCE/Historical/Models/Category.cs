@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Historical.Models
+namespace Historical.Model
 {
     public partial class Category
     {

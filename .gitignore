@@ -28,4 +28,3 @@ node_modules
 .lock-wscript
 SOURCE/Historical/obj
 SOURCE/Historical/bin
-SOURCE/.vs

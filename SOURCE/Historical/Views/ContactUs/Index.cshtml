@@ -21,8 +21,9 @@
     <!--?  Contact Area start  -->
     <section class="contact-section">
         <div class="container">
-            <div class="row">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1123.2845802169131!2d105.78286330640648!3d21.028879527056088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313455f9bdf0e1c7%3A0x26caee8e7662dd9b!2zRlBUIEFwdGVjaCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1606204448025!5m2!1svi!2s" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <div class="d-none d-sm-block mb-5 pb-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.097368733801!2d105.77963881440736!3d21.02878969315433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b32ecb92db%3A0x3964e6238a3bd088!2zOCBUw7RuIFRo4bqldCBUaHV54bq_dCwgTeG7uSDEkMOsbmgsIEPhuqd1IEdp4bqleSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1607092278915!5m2!1svi!2s" width="1200" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
             </div>
             <div class="row">
                 <div class="col-12">
@@ -46,14 +47,9 @@
                                     <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
-                                </div>
-                            </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            <button type="submit" class="button button-contactForm boxed-btn" onclick="sendContact()">Send</button>
                         </div>
                     </form>
                 </div>
@@ -61,21 +57,21 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-home"></i></span>
                         <div class="media-body">
-                            <h3>Buttonwood, California.</h3>
-                            <p>Rosemead, CA 91770</p>
+                            <h3>Detech Tower</h3>
+                            <p>Ha Noi, Viet Nam</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                         <div class="media-body">
-                            <h3>+1 253 565 2365</h3>
-                            <p>Mon to Fri 9am to 6pm</p>
+                            <h3>+84 378 990 728</h3>
+                            <p>Mon to Fri 8am to 6pm</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3>support@colorlib.com</h3>
+                            <h3>nguyenminhan696@gmail.com</h3>
                             <p>Send us your query anytime!</p>
                         </div>
                     </div>
@@ -87,15 +83,41 @@
         <button class="btn btn-danger" id="test" onclick="Test()"> test</button>
     </div>
  </div>
-<script type="text/javascript"> 
-    function Test() {
-        var content = "13322";
+
+<script type="text/javascript">
+    function sendContact() {
+        var mes = $('#message').val();
+        var name = $('#name').val();
+        var email = $('#email').val();
+        if (mes == null || name == null || email == null) {
+            swal({
+                title: "Vui lòng nhập đầy đủ thông tin!",
+                text: "Thất bại ",
+                icon: "success"
+            });
+        }
         $.ajax({
-            url: '/ContactUs/Test',
-            data: { Content: content },
+            url: 'ContactUs/Create',
+            data: { Mes: mes, Name: name, Email:email },
             type: 'POST',
             success: function (res) {
-                alert(res);
+                
+                if (res > 0) {
+                    alert("Tạo ContactUs thành công!");
+                    location.reload();
+                    //swal({
+                    //    title: "Tạo ContactUs thành công!",
+                    //    text: "Thành công",
+                    //    icon: "success"
+                    //})
+                } else {
+                    alert("Tạo ContactUs thất bại, vui lòng kiểm tra lại!");
+                    //swal({
+                    //    title: "Tạo ContactUs thất bại, vui lòng kiểm tra lại!",
+                    //    text: "Thất bại ",
+                    //    icon: "warning"
+                    //})
+                }
             }
         });
     }

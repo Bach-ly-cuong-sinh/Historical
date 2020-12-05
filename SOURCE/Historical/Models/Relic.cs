@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Historical.Models
+namespace Historical.Model
 {
     public partial class Relic
     {
@@ -19,6 +19,9 @@ namespace Historical.Models
         public int IsActive { get; set; }
         public DateTime? CraetedDate { get; set; }
         public int CateId { get; set; }
+        public string Content { get; set; }
+        public string ImageUrl { get; set; }
+        public string Title { get; set; }
 
         public virtual Category Cate { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }

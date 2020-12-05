@@ -10,6 +10,7 @@ namespace Historical.Controllers
 {
     public class ContactUsController : Controller
     {
+        ContactUsBusiness contactUsBusiness = new ContactUsBusiness();
         public IActionResult Index()
         {
             return View();
@@ -34,10 +35,26 @@ namespace Historical.Controllers
                 c.cnn.SaveChanges();
                 return Content;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
                 return null;
+            }
+        }
+        public int Create( string Mes, string Name,string Email)
+        {
+            try
+            {
+                var data = contactUsBusiness.Create(Mes,Name,Email);
+                if(data > 0)
+                {
+                    return data;
+                }
+                return 0;
+            }catch(Exception e)
+            {
+                e.ToString();
+                return 0;
             }
         }
     }
