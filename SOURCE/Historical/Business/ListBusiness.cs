@@ -27,6 +27,7 @@ namespace Historical.Business
                 if(query != null)
                 {
                     data = query.FirstOrDefault();
+                    return data;
                 }
                 return new RelicsOutputModel();
             }
