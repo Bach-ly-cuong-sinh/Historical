@@ -31,6 +31,7 @@ namespace Historical.Controllers
                 ContactInput.IsActive = 1;
                 ContactInput.RelicId = 1;
                 GenericBusiness c = new GenericBusiness();
+                /// cái này dùng chinh model của feedback để add nhé
                 c.cnn.Feedbacks.Add(ContactInput);
                 c.cnn.SaveChanges();
                 return Content;
@@ -41,17 +42,18 @@ namespace Historical.Controllers
                 return null;
             }
         }
-        public int Create( string Mes, string Name,string Email)
+        public int Create(string Mes, string Name, string Email)
         {
             try
             {
-                var data = contactUsBusiness.Create(Mes,Name,Email);
-                if(data > 0)
+                var data = contactUsBusiness.Create(Mes, Name, Email);
+                if (data > 0)
                 {
                     return data;
                 }
                 return 0;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 e.ToString();
                 return 0;
