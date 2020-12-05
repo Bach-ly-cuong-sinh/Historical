@@ -1,5 +1,47 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model RelicsOutputModel
 
+<div>
+    <!--? Hero Start -->
+    <div class="slider-area2 ">
+        <div class="slider-height2 hero-overly d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero__caption hero__caption2">
+                            <h2>Services</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!--? services area start -->
+
+    <section class="services-section section-padding30 fix">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="single-cat mb-40">
+                        <div class="cat-icon">
+
+                            <img src="@Model.ImageUrl" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a>@Model.RelicsName</a></h5>
+                            <p>@Model.Address</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="@Model.MapUrl"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 

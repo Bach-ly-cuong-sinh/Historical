@@ -34,14 +34,14 @@
                                 <img src="/img/gallery/services7.png" alt="">
                             </div>
                             <div class="cat-cap">
-                                <h5><a>@list.Name</a></h5>
+                                <h5><a href="">@list.Name</a></h5>
                                 <p>@list.Address</p>
                             </div>
-
+                            <button class="btn btn-danger" onclick="Detail(@list.Id)">Xem chi tiết</button>
                         </div>
                     </div>
                 }
-
+            <button class="btn btn-danger" onclick="Detail(1)">Xem chi tiết</button>
             </div>
         </div>
         <div page-model="@Model.Pageinfo" page-ation="Index" page-class="btn" page-class-normal="btn-outline-dark"
@@ -49,3 +49,16 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    function Detail(id) {
+        alert(id);
+        $.ajax({
+            url: 'List/Detail',
+            data: { ID: id},
+            type: 'POST',
+            success: function (res) {
+
+            }
+        });
+    }
+</script>

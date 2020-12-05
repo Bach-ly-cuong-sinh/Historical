@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Historical.Models;
+using Historical.Business;
+
 namespace Historical.Controllers
 {
     public class ListController : Controller
     {
+        ListBusiness listBusiness = new ListBusiness();
         private IStoreRepository repository;
         public int Pagesize = 9;
         public ListController(IStoreRepository repo)
@@ -29,9 +32,18 @@ namespace Historical.Controllers
 
             });
     
-       public ActionResult Detail(long id)
+       public ActionResult Detail(int ID)
         {
-            return View();
+            try
+            {
+                var data = listBusiness.Detail(ID);
+                //return data;
+                return View("Detail",data);
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         } 
     }
     
