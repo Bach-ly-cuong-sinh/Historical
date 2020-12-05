@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Historical.Model;
+using Historical.Models;
 
 namespace Historical.Business
 {
-    public class GenericBusiness:Models.IStoreRepository
+    public class GenericBusiness:IStoreRepository
     {
         public HistoricalContext context;
         public HistoricalContext cnn;
@@ -18,6 +19,6 @@ namespace Historical.Business
             }
             cnn = this.context;
         }
-        public IQueryable<Models.Relic> relics => context.Relics;
+        public IQueryable<Relic> relics => context.Relics;
     }
 }
