@@ -83,4 +83,20 @@
             </div>
         </div>
     </section>
+    <div>
+        <button class="btn btn-danger" id="test" onclick="Test()"> test</button>
+    </div>
  </div>
+<script type="text/javascript"> 
+    function Test() {
+        var content = "13322";
+        $.ajax({
+            url: '/ContactUs/Test',
+            data: { Content: content },
+            type: 'POST',
+            success: function (res) {
+                alert(res);
+            }
+        });
+    }
+</script>

@@ -1,94 +1,51 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
-    <!--? Hero Start -->
-    <div class="slider-area2 ">
-        <div class="slider-height2 hero-overly d-flex align-items-center">
+@model RelicListViewModel
+    <div>
+        <!--? Hero Start -->
+        <div class="slider-area2 ">
+            <div class="slider-height2 hero-overly d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero__caption hero__caption2">
+                                <h2>Services</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? services area start -->
+
+        <section class="services-section section-padding30 fix">
             <div class="container">
+
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="hero__caption hero__caption2">
-                            <h2>Services</h2>
+
+                    @foreach (var list in Model.Relics)
+                    {
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-cat mb-40">
+                            <div class="cat-icon">
+
+                                <img src="/img/gallery/services7.png" alt="">
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a>@list.Name</a></h5>
+                                <p>@list.Address</p>
+                            </div>
                         </div>
                     </div>
+                    }
+
                 </div>
             </div>
+        </section>
+        <div page-model="@Model.Pageinfo" page-ation="Index" page-class="btn" page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary">
         </div>
+        <!-- Services End -->
     </div>
-    <!-- Hero End -->
-    <!--? services area start -->
-    <section class="services-section section-padding30 fix">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat mb-40">
-                        <div class="cat-icon">
-                            <img src="/img/gallery/services7.png" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Residential Real Estate Photography</a></h5>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat mb-40">
-                        <div class="cat-icon">
-                            <img src="/img/gallery/services8.png" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Commercial Real Estate Photography</a></h5>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat mb-40">
-                        <div class="cat-icon">
-                            <img src="/img/gallery/services9.png" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Construction Site Monitoring</a></h5>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat mb-40">
-                        <div class="cat-icon">
-                            <img src="/img/gallery/services4.png" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Commercial Real Estate Photography</a></h5>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat mb-40">
-                        <div class="cat-icon">
-                            <img src="/img/gallery/services5.png" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Residential Real Estate Photography</a></h5>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat mb-40">
-                        <div class="cat-icon">
-                            <img src="/img/gallery/services6.png" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="/List">Commercial Real Estate Photography</a></h5>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Services End -->
-</div>

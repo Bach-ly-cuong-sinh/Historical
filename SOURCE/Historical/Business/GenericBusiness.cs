@@ -6,7 +6,7 @@ using Historical.Models;
 
 namespace Historical.Business
 {
-    public class GenericBusiness
+    public class GenericBusiness:Models.IStoreRepository
     {
         public HistoricalContext context;
         public HistoricalContext cnn;
@@ -18,6 +18,6 @@ namespace Historical.Business
             }
             cnn = this.context;
         }
-
+        public IQueryable<Models.Relic> relics => context.Relics;
     }
 }
