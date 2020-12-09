@@ -19,45 +19,46 @@
     </div>
     <!-- Hero End -->
     <!--? services area start -->
+    <div id="data">
+        <section class="services-section section-padding30 fix">
+            <div class="container">
 
-    <section class="services-section section-padding30 fix">
-        <div class="container">
+                <div class="row">
 
-            <div class="row">
+                    @foreach (var list in Model.Relics)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-cat mb-40">
+                                <div class="cat-icon">
 
-                @foreach (var list in Model.Relics)
-                {
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-cat mb-40">
-                            <div class="cat-icon">
-
-                                <img src="/img/gallery/services7.png" alt="">
+                                    <img src="@list.ImageUrl" alt="">
+                                </div>
+                                <div class="cat-cap">
+                                    <h5><a href="">@list.Name</a></h5>
+                                    <p>@list.Address</p>
+                                </div>
+                                <button class="btn btn-danger" onclick="Detail(@list.Id)">Xem chi tiết</button>
                             </div>
-                            <div class="cat-cap">
-                                <h5><a href="">@list.Name</a></h5>
-                                <p>@list.Address</p>
-                            </div>
-                            <button class="btn btn-danger" onclick="Detail(@list.Id)">Xem chi tiết</button>
                         </div>
-                    </div>
-                }
-            <button class="btn btn-danger" onclick="Detail(1)">Xem chi tiết</button>
+                    }
+                    <button class="btn btn-danger" onclick="Detail(1)">Xem chi tiết</button>
+                </div>
             </div>
-        </div>
-        <div page-model="@Model.Pageinfo" page-ation="Index" page-class="btn" page-class-normal="btn-outline-dark"
-             page-class-selected="btn-primary">
-        </div>
-    </section>
+            <div page-model="@Model.Pageinfo" page-ation="Index" page-class="btn" page-class-normal="btn-outline-dark"
+                 page-class-selected="btn-primary">
+            </div>
+        </section>
+    </div>
+    
 </div>
 <script type="text/javascript">
     function Detail(id) {
-        alert(id);
         $.ajax({
             url: 'List/Detail',
             data: { ID: id},
             type: 'POST',
             success: function (res) {
-
+                $('#data').html(res);
             }
         });
     }

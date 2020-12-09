@@ -12,7 +12,7 @@ namespace Historical.Controllers
     {
         ListBusiness listBusiness = new ListBusiness();
         private IStoreRepository repository;
-        public int Pagesize = 9;
+        public int Pagesize = 12;
         public ListController(IStoreRepository repo)
         {
             repository = repo;
@@ -32,13 +32,12 @@ namespace Historical.Controllers
 
             });
     
-       public ActionResult Detail(int ID)
+       public PartialViewResult Detail(int ID)
         {
             try
             {
                 var data = listBusiness.Detail(ID);
-                //return data;
-                return View("Detail",data);
+                return PartialView("Detail",data);
             }
             catch(Exception e)
             {

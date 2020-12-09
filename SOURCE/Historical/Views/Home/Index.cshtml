@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model RelicListViewModel
 <div>
     <!--? slider Area Start-->
     <section class="slider-area ">
@@ -85,95 +85,28 @@
         <div class="container">
             <div class="custom-row">
                 <div class="services-active">
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services1.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Residential Real Estate Photography</a></h5>
-                                <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services2.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Commercial Real Estate Photography</a></h5>
-                                <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
+
+                    @foreach (var list in Model.Relics)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-cat mb-40">
+                                <div class="cat-icon">
+
+                                    <img src="@list.ImageUrl" alt="">
+                                </div>
+                                <div class="cat-cap">
+                                    <h5><a href="">@list.Name</a></h5>
+                                    <p>@list.Address</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services3.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Construction Site Monitoring</a></h5>
-                                <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services2.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Commercial Real Estate Photography</a></h5>
-                                <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur.</p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
     </section>
     <!-- Services End -->
     <!--? video_start -->
-    <div class="video-area section-bg2 d-flex align-items-end fix" data-background="~/img/gallery/video-bg.png">
-        <!-- Video icon -->
-        <div class="video-icon">
-            <a class="popup-video btn-icon" href="https://www.youtube.com/watch?v=up68UAfH0d0"><i class="fas fa-play"></i></a>
-        </div>
-        <div class="container">
-            <div class="video-contents">
-                <div class="row justify-content-between">
-                    <div class="col-xl-5 col-lg-5 col-md-10">
-                        <div class="section-tittle  mb-90">
-                            <h2>How we work?</h2>
-                            <p class="tittle-pera1">Inasfa reprehenderit in voluptate velit esse  cillum reeut cupidatatfug nulla pariatur.</p>
-                            <p>Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur. Excepteur sintxsdfas occaecat.</p>
-                            <a href="#" class="btn black-btn">Start a Project</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-6 col-md-8">
-                        <div class="edu-details">
-                            <!-- single-item -->
-                            <div class="single-items mb-50">
-                                <span>Tell Us About Your Project</span>
-                                <p>Aute irure dolor inasfa prehenderit  in voluptate velit esse cillum.</p>
-                            </div>
-                            <!-- single-item -->
-                            <div class="single-items single-items2 mb-50">
-                                <span>We'll Schedule a Flight</span>
-                                <p>Aute irure dolor inasfa prehenderit in voluptate velit esse cillum.</p>
-                            </div>
-                            <!-- single-item -->
-                            <div class="single-items single-items3 mb-50">
-                                <span>We'll Schedule a Flight</span>
-                                <p>Aute irure dolor inasfa prehenderit in voluptate velit esse cillum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- video_end -->
     <!--? Visit Our Tailor Start -->
     <div class="visit-tailor-area fix">
@@ -195,46 +128,21 @@
         <div class="container">
             <div class="custom-row">
                 <div class="services-active">
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services4.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Drone Inspection team from Terra Drone</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services5.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Commercial Real Estate Photography</a></h5>
+                    @foreach (var list in Model.Relics)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-cat mb-40">
+                                <div class="cat-icon">
+
+                                    <img src="@list.ImageUrl" alt="">
+                                </div>
+                                <div class="cat-cap">
+                                    <h5><a href="">@list.Name</a></h5>
+                                    <p>@list.Address</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services6.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Construction Site Monitoring</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-cat">
-                            <div class="cat-icon">
-                                <img src="~/img/gallery/services5.png" alt="">
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="services.html">Commercial Real Estate Photography</a></h5>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
