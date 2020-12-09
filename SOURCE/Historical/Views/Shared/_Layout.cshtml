@@ -72,9 +72,7 @@
                                                 <li>@Html.ActionLink("Contact US", "Index", "Contactus")</li>
                                                 <!-- Header btn -->
                                                 <li>
-                                                    <div class="header-right-btn ml-40">
-                                                        <a href="" class="btn"><img src="~/img/icon/smartphone.svg" alt="">(84) 378-990 728</a>
-                                                    </div>
+                                                    <button class="btn" id="login" onclick="loginv()">LogIn</button>
                                                 </li>
                                             </ul>
                                         </nav>
@@ -236,5 +234,7 @@
 </body>
 </html>
 <script type="text/javascript">
-
+    function loginv() {
+        location.href = '/Login_Admin';
+    }
 </script>

@@ -53,7 +53,7 @@
     function Detail(id) {
         alert(id);
         $.ajax({
-            url: 'List/Detail',
+            url: '@Url.Action("Detail","List")',
             data: { ID: id},
             type: 'POST',
             success: function (res) {
