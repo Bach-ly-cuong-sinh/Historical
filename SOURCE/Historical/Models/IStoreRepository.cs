@@ -9,5 +9,6 @@ namespace Historical.Models
     public interface IStoreRepository
     {
         IQueryable<Relic> relics { get; }
+        
     }
 }
