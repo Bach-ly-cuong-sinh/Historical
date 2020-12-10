@@ -11,17 +11,29 @@ namespace Historical.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IStoreRepository repository;
+        public int Pagesize = 5;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IStoreRepository repo)
         {
-            _logger = logger;
+            repository = repo;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index(int RelicPage = 1) => View(
+           new RelicListViewModel
+           {
+               Relics = repository.relics
+
+               .OrderBy(p => p.Id).Skip((RelicPage - 1) * Pagesize)
+               .Take(Pagesize),
+               Pageinfo = new PageInfo
+               {
+                   CurrentPage = RelicPage,
+                   ItemsPage = Pagesize,
+                   TotalItems = repository.relics.Count()
+               },
+
+           });
 
         public IActionResult Privacy()
         {
