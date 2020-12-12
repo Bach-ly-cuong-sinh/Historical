@@ -2,33 +2,65 @@
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
 @model List<UserOutputModel>
+
+<button style="width: 80px;
+        height: 25px;
+        text-align: center;
+        margin: 20px;
+        /*background-color: #00ff21;*/
+        /*color: #ffffff;*/">
+    Create
+</button>
+
 <table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
+    <thead style="text-align: center; background-color: #9C27B0; color: #ffffff;">
+    <th>ID</th>
+    <th>Name</th>
+    <th>IsActive</th>
+    <th>PassWord</th>
+    <th>Created Date</th>
+    <th>Action</th>
+    </thead>
     <tbody class="text-center" id="table-content">
         @{
-        if (Model == null)
-        {
-            <tr>
-                <td colspan="15">Không có dữ liệu.</td>
-            </tr>
+            if (Model == null)
+            {
+                <tr>
+                    <td colspan="5">Không có dữ liệu.</td>
+                </tr>
             }
             else
             {
                 foreach (var item in Model)
                 {
-                    <th>
-                        ID
-                    </th>
                     <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        @{
+                            if (@item.IsActive == 1)
+                            {
+                                <td>Active</td>
+                            }
+                            else if (@item.IsActive == 0)
+                            {
+                                <td>Non Active</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
 
-                        @item.Id
+                        }
+                        <td>@item.Password</td>
+                        <td>@item.CreatedDateStr</td>
+                        <td>
+                            <a href="javascript:void(0);" title="Delete" class="cursor-pointer">
+                                <i class="btnDelete fa fa-fw fa-trash-o"></i>
+                            </a>
+                        </td>
                     </tr>
-                    <tr>
-                        
-                    </tr>
-
                 }
             }
-
         }
     </tbody>
 </table>

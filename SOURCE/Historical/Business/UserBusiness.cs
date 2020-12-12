@@ -42,7 +42,6 @@ namespace Historical.Business
             {
                 List<UserOutputModel> data = new List<UserOutputModel>();
                 var q = from u in cnn.Users
-                        where u.IsActive.Equals(1)
                         orderby (u.Id)
                         select (new UserOutputModel()
                         {
