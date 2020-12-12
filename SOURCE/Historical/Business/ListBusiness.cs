@@ -23,10 +23,12 @@ namespace Historical.Business
                                 CategoryName = c.Cate.Name,
                                 CreatedDate = c.CraetedDate.Value,
                                 Address = c.Address,
+                                ImageUrl = c.ImageUrl
                             });
                 if(query != null)
                 {
                     data = query.FirstOrDefault();
+                    return data;
                 }
                 return new RelicsOutputModel();
             }

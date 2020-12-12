@@ -37,7 +37,7 @@ namespace Historical.Controllers
             try
             {
                 var data = listBusiness.Detail(ID);
-                return PartialView("Detail",data);
+                return PartialView("ListDetail",data);
             }
             catch(Exception e)
             {
