@@ -52,21 +52,22 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item active  ">
-                        <a class="nav-link" href="./dashboard.html">
+                        <a class="nav-link" href="/BackEndHome/index">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="/BackEndHome/ListUser">
                             <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                            <p>List User</p>
                         </a>
+                        <button id="user" onclick="user()">user</button>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="./tables.html">
                             <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
+                            <p>List Pagoda</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -176,7 +177,7 @@ The above copyright notice and this permission notice shall be included in all c
             </nav>
             <!-- End Navbar -->
             <div class="content">
-                <div class="container-fluid">
+                <div class="container-fluid" id="contentt">
                     @RenderBody()
                 </div>
             </div>
@@ -505,6 +506,17 @@ The above copyright notice and this permission notice shall be included in all c
             md.initDashboardPageCharts();
 
         });
+        function user() {
+            $.ajax({
+                type: "GET",
+                url: "/BackEndHome/ListUser",
+                data: {},
+                success: function (res) {
+                    //alert(res);
+                    //$('#contentt').html(res);
+                }
+            });
+        }
     </script>
 </body>
 

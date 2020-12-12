@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layoutbackend.cshtml";
+}
+@model List<UserOutputModel>
+<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
+    <tbody class="text-center" id="table-content">
+        @{
+        if (Model == null)
+        {
+            <tr>
+                <td colspan="15">Không có dữ liệu.</td>
+            </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <th>
+                        ID
+                    </th>
+                    <tr>
+
+                        @item.Id
+                    </tr>
+                    <tr>
+                        
+                    </tr>
+
+                }
+            }
+
+        }
+    </tbody>
+</table>

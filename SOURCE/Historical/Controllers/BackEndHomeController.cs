@@ -10,6 +10,7 @@ namespace Historical.Controllers
     public class BackEndHomeController : Controller
     {
         GenericBusiness c = new GenericBusiness();
+        UserBusiness UserBusiness = new UserBusiness();
         public IActionResult Index()
         {
             ViewBag.CountCategory = c.cnn.Categories.Where(ca => ca.IsActive.Equals(1)).Count();
@@ -18,6 +19,18 @@ namespace Historical.Controllers
             ViewBag.CountUser = c.cnn.Users.Where(u => u.IsActive.Equals(1)).Count();
             ViewBag.CountContact = c.cnn.Contacts.Where(co => co.IsActive.Equals(1)).Count();
             return View();
+        }
+        public PartialViewResult ListUser()
+        {
+            try
+            {
+                var data = UserBusiness.ListUser();
+                return PartialView("ListUser", data);
+            }
+            catch
+            {
+                return PartialView("ListUser", null);
+            }
         }
     }
 }
