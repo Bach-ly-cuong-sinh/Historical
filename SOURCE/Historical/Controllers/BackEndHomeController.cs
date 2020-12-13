@@ -12,6 +12,7 @@ namespace Historical.Controllers
         GenericBusiness c = new GenericBusiness();
         UserBusiness UserBusiness = new UserBusiness();
         RelicsBusiness RelicsBusiness = new RelicsBusiness();
+        FeedBackBusiness FeedBackBusiness = new FeedBackBusiness();
         public IActionResult Index()
         {
             ViewBag.CountCategory = c.cnn.Categories.Where(ca => ca.IsActive.Equals(1)).Count();
@@ -43,6 +44,18 @@ namespace Historical.Controllers
             catch
             {
                 return PartialView("ListPagoda", null);
+            }
+        }
+        public PartialViewResult ListFeedBack()
+        {
+            try
+            {
+                var data = FeedBackBusiness.ListFeedBack();
+                return PartialView("ListFeedBack", data);
+            }
+            catch
+            {
+                return PartialView("ListFeedBack", null);
             }
         }
     }

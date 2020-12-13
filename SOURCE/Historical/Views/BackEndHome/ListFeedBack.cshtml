@@ -1,3 +1,31 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
+@model List<FeedBackOutputModel>
+<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
+    <tbody class="text-center" id="table-content">
+        @{
+            if (Model == null)
+            {
+                <tr>
+                    <td colspan="15">Không có dữ liệu.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                <th>
+                    ID
+                </th>
+                <tr>
+
+                   
+                </tr>
+
+            }
+        }
+
+        }
+        </tbody>
+    </table>
