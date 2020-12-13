@@ -42,7 +42,7 @@ namespace Historical.Business
             {
                 List<UserOutputModel> data = new List<UserOutputModel>();
                 var q = from u in cnn.Users
-                        orderby (u.Id)
+                        orderby u.Id ,u.IsActive descending
                         select (new UserOutputModel()
                         {
                             Id = u.Id,
@@ -61,6 +61,41 @@ namespace Historical.Business
             catch
             {
                 return new List<UserOutputModel>();
+            }
+        }
+        public List<UserOutputModel> DeleteUser(int Id)
+        {
+            try
+            {
+                var user = cnn.Users.Find(Id);
+                if (user.IsActive.Equals(1))
+                {
+                    user.IsActive = 0;
+                    cnn.SaveChanges();
+                }
+                return this.ListUser();
+            }
+            catch
+            {
+                return this.ListUser();
+            }
+        }
+        public List<UserOutputModel> CreateUser(string Name, string Password)
+        {
+            try
+            {
+                User u = new User();
+                u.Name = Name;
+                u.Password = Password;
+                u.IsActive = 1;
+                u.CreatedDate = DateTime.Now;
+                cnn.Add(u);
+                cnn.SaveChanges();
+                return this.ListUser();
+            }
+            catch
+            {
+                return this.ListUser();
             }
         }
     }

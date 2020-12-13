@@ -3,6 +3,19 @@
 }
 @model List<UserOutputModel>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <input class="form-control" placeholder="Tài khoản" id="txtUserName" />
+        </div>
+        <div class="col-md-5">
+            <input class="form-control" placeholder="Mật khẩu" id="txtPassword" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-danger" onclick="Create()"> Tạo mới</button>
+        </div>
+    </div>
+</div>
 <button style="width: 80px;
         height: 25px;
         text-align: center;
@@ -14,12 +27,12 @@
 
 <table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
     <thead style="text-align: center; background-color: #9C27B0; color: #ffffff;">
-    <th>ID</th>
-    <th>Name</th>
-    <th>IsActive</th>
-    <th>PassWord</th>
-    <th>Created Date</th>
-    <th>Action</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>IsActive</th>
+        <th>PassWord</th>
+        <th>Created Date</th>
+        <th>Action</th>
     </thead>
     <tbody class="text-center" id="table-content">
         @{
@@ -54,9 +67,13 @@
                         <td>@item.Password</td>
                         <td>@item.CreatedDateStr</td>
                         <td>
-                            <a href="javascript:void(0);" title="Delete" class="cursor-pointer">
+                            @*<button onclick="Delete(@item.Id)">
                                 <i class="btnDelete fa fa-fw fa-trash-o"></i>
-                            </a>
+                            </button>*@
+                            @*<a href="javascript:void(0);" title="Xóa yêu cầu." class="cursor-pointer" onclick="Delete(@item.Id)">
+                                <i class="btnDelete fa fa-fw fa-trash-o"></i>
+                            </a>*@
+                            <button onclick="Delete(@item.Id)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
                         </td>
                     </tr>
                 }
@@ -64,3 +81,27 @@
         }
     </tbody>
 </table>
+<script type="text/javascript">
+    function Delete(id) {
+        alert(id);
+        $.ajax({
+            type: "POST",
+            url: "/BackEndHome/DeleteUser",
+            data: { Id: id },
+            success: function (res) {
+            }
+        });
+    };
+    function Create() {
+        var username = $('#txtUserName').val;
+        var pas = $('#txtPassword').val;
+        alert(pas);
+        $.ajax({
+            type: "POST",
+            url: "/BackEndHome/Create",
+            data: { UserName: username, Password: pas },
+            success: function (res) {
+            }
+        });
+    }
+</script>

@@ -58,5 +58,29 @@ namespace Historical.Controllers
                 return PartialView("ListFeedBack", null);
             }
         }
+        public PartialViewResult DeleteUser(int Id)
+        {
+            try
+            {
+                var data = UserBusiness.DeleteUser(Id);
+                return PartialView("ListUser", data);
+            }
+            catch
+            {
+                return PartialView("ListUser", null);
+            }
+        }
+        public PartialViewResult CreateUser(string UserName, string Password)
+        {
+            try
+            {
+                var data = UserBusiness.CreateUser(UserName, Password);
+                return PartialView("ListUser", data);
+            }
+            catch
+            {
+                return PartialView("ListUser", null);
+            }
+        }
     }
 }
