@@ -1,31 +1,53 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
-@model List<RelicsOutputModel> 
-<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
+@model List<RelicsOutputModel>
+<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md"
+       style="overflow: auto;
+        max-height: calc(100vh - 100px);
+        display: inline-block">
+    <thead style="position: relative;">
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">ID</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Category</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Name</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Address</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Map Url</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Image Url</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Created Date</th>
+    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Action</th>
+    </thead>
     <tbody class="text-center" id="table-content">
         @{
             if (Model == null)
             {
                 <tr>
-                    <td colspan="15">Không có dữ liệu.</td>
+                    <td colspan="8">Không có dữ liệu.</td>
                 </tr>
             }
             else
             {
                 foreach (var item in Model)
                 {
-                <th>
-                    ID
-                </th>
-                <tr>
-
-                    @item.CategoryID
-                </tr>
-
+                    <tr>
+                        <td>@item.RelicsID</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.RelicsName</td>
+                        <td>@item.Address</td>
+                        <td>@item.MapUrl</td>
+                        <td>@item.ImageUrl</td>
+                        <td>@item.CreatedDateStr</td>
+                        <td>
+                            @*<button onclick="Delete(@item.Id)">
+                                    <i class="btnDelete fa fa-fw fa-trash-o"></i>
+                                </button>*@
+                            @*<a href="javascript:void(0);" title="Xóa yêu cầu." class="cursor-pointer" onclick="Delete(@item.Id)">
+                                    <i class="btnDelete fa fa-fw fa-trash-o"></i>
+                                </a>*@
+                            <button onclick="Delete(@item.RelicsID)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                }
             }
         }
-
-        }
-        </tbody>
-    </table>
+    </tbody>
+</table>
