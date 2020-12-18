@@ -19,22 +19,25 @@ namespace Historical.Controllers
             repository = repo;
         }
 
-        public IActionResult Index(int RelicPage = 1) => View(
-           new RelicListViewModel
-           {
-               Relics = repository.relics
+        //public IActionResult Index(int RelicPage = 1) => View(
+        //   new RelicListViewModel
+        //   {
+        //       Relics = repository.relics
 
-               .OrderBy(p => p.Id).Skip((RelicPage - 1) * Pagesize)
-               .Take(Pagesize),
-               Pageinfo = new PageInfo
-               {
-                   CurrentPage = RelicPage,
-                   ItemsPage = Pagesize,
-                   TotalItems = repository.relics.Count()
-               },
+        //       .OrderBy(p => p.Id).Skip((RelicPage - 1) * Pagesize)
+        //       .Take(Pagesize),
+        //       Pageinfo = new PageInfo
+        //       {
+        //           CurrentPage = RelicPage,
+        //           ItemsPage = Pagesize,
+        //           TotalItems = repository.relics.Count()
+        //       },
 
-           });
-
+        //   });
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

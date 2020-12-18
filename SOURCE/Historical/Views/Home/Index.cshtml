@@ -81,72 +81,80 @@
     </section>
     <!-- About  End-->
     <!--? services area start -->
-    <section class="services-section pb-padding fix">
-        <div class="container">
-            <div class="custom-row">
-                <div class="services-active">
+    @{
+        if (Model != null)
+        {
+            <section class="services-section pb-padding fix">
+                <div class="container">
+                    <div class="custom-row">
+                        <div class="services-active">
 
-                    @foreach (var list in Model.Relics)
-                    {
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-cat mb-40">
-                                <div class="cat-icon">
+                            @foreach (var list in Model.Relics)
+                            {
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="single-cat mb-40">
+                                        <div class="cat-icon">
 
-                                    <img src="@list.ImageUrl" alt="">
+                                            <img src="@list.ImageUrl" alt="">
+                                        </div>
+                                        <div class="cat-cap">
+                                            <h5><a href="">@list.Name</a></h5>
+                                            <p>@list.Address</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cat-cap">
-                                    <h5><a href="">@list.Name</a></h5>
-                                    <p>@list.Address</p>
-                                </div>
-                            </div>
+                            }
                         </div>
-                    }
+                    </div>
+                </div>
+            </section>
+            <!--? Visit Our Tailor Start -->
+            <div class="visit-tailor-area fix">
+                <!--Right Contents  -->
+                <div class="tailor-offers"></div>
+                <!-- left Contents -->
+                <div class="tailor-details">
+                    <h2>Recent projects</h2>
+                    <p>
+                        Inasfa reprehenderit in voluptate velit esse
+                        cillum reeut cupidatatfug nulla pariatur.
+                    </p>
+                    <p class="pera-bottom">Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur. Excepteur sintxsdfas occaecat.</p>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Services End -->
-    <!--? video_start -->
-    <!-- video_end -->
-    <!--? Visit Our Tailor Start -->
-    <div class="visit-tailor-area fix">
-        <!--Right Contents  -->
-        <div class="tailor-offers"></div>
-        <!-- left Contents -->
-        <div class="tailor-details">
-            <h2>Recent projects</h2>
-            <p>
-                Inasfa reprehenderit in voluptate velit esse
-                cillum reeut cupidatatfug nulla pariatur.
-            </p>
-            <p class="pera-bottom">Aute irure dolor inasfa reprehenderit in voluptate velit esse cillum reeut cupidatatfug nulla pariatur. Excepteur sintxsdfas occaecat.</p>
-        </div>
-    </div>
-    <!-- Visit Our Tailor End -->
-    <!--? services area start -->
-    <section class="services-section services-section2 pb-padding  fix">
-        <div class="container">
-            <div class="custom-row">
-                <div class="services-active">
-                    @foreach (var list in Model.Relics)
-                    {
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-cat mb-40">
-                                <div class="cat-icon">
+            <!-- Visit Our Tailor End -->
+            <!--? services area start -->
+            <section class="services-section services-section2 pb-padding  fix">
+                <div class="container">
+                    <div class="custom-row">
+                        <div class="services-active">
+                            @foreach (var list in Model.Relics)
+                            {
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="single-cat mb-40">
+                                        <div class="cat-icon">
 
-                                    <img src="@list.ImageUrl" alt="">
+                                            <img src="@list.ImageUrl" alt="">
+                                        </div>
+                                        <div class="cat-cap">
+                                            <h5><a href="">@list.Name</a></h5>
+                                            <p>@list.Address</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="cat-cap">
-                                    <h5><a href="">@list.Name</a></h5>
-                                    <p>@list.Address</p>
-                                </div>
-                            </div>
+                            }
                         </div>
-                    }
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        }
+        else
+        {
+            <h1>Không tồn tại dữ liệu</h1>
+        }
+    }
+
+
     <!-- Services End -->
     <!--? Testimonial Area Start -->
     <section class="testimonial-area testimonial-padding fix section-bg" data-background="~/img/gallery/section_bg03.png">

@@ -13,7 +13,7 @@
     <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Address</th>
     <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Map Url</th>
     <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Image Url</th>
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Created Date</th>
+    @*<th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Created Date</th>*@
     <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Action</th>
     </thead>
     <tbody class="text-center" id="table-content">
@@ -29,21 +29,15 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.RelicsID</td>
-                        <td>@item.CategoryName</td>
-                        <td>@item.RelicsName</td>
-                        <td>@item.Address</td>
-                        <td>@item.MapUrl</td>
-                        <td>@item.ImageUrl</td>
-                        <td>@item.CreatedDateStr</td>
-                        <td>
-                            @*<button onclick="Delete(@item.Id)">
-                                    <i class="btnDelete fa fa-fw fa-trash-o"></i>
-                                </button>*@
-                            @*<a href="javascript:void(0);" title="Xóa yêu cầu." class="cursor-pointer" onclick="Delete(@item.Id)">
-                                    <i class="btnDelete fa fa-fw fa-trash-o"></i>
-                                </a>*@
-                            <button onclick="Delete(@item.RelicsID)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
+                        <td class="col-md-1">@item.RelicsID</td>
+                        <td class="col-md-2">@item.CategoryName</td>
+                        <td class="col-md-2">@item.RelicsName</td>
+                        <td class="col-md-2">@item.Address</td>
+                        <td class ="col-md-2"> @item.MapUrl</td>
+                        <td class="col-md-2">@item.ImageUrl</td>
+                        @*<td class="col-md-2">@item.CreatedDateStr</td>*@
+                        <td class="col-md-1">
+                            <button onclick="DeletePagoda(@item.RelicsID)">xóa</button>
                         </td>
                     </tr>
                 }
@@ -51,3 +45,14 @@
         }
     </tbody>
 </table>
+<script type="text/javascript">
+    function DeletePagoda(id) {
+        $.ajax({
+            type: "POST",
+            url: "/BackEndHome/DeletePagoda",
+            data: { Id: id },
+            success: function (res) {
+            }
+        });
+    }
+</script>

@@ -12,7 +12,7 @@
             <input class="form-control" placeholder="Mật khẩu" id="txtPassword" />
         </div>
         <div class="col-md-2">
-            <button class="btn btn-danger" onclick="Create()"> Tạo mới</button>
+            <button class="btn btn-danger" onclick="CreateUser()"> Tạo mới</button>
         </div>
     </div>
 </div>
@@ -59,13 +59,7 @@
                         <td>@item.Password</td>
                         <td>@item.CreatedDateStr</td>
                         <td>
-                            @*<button onclick="Delete(@item.Id)">
-                                <i class="btnDelete fa fa-fw fa-trash-o"></i>
-                            </button>*@
-                            @*<a href="javascript:void(0);" title="Xóa yêu cầu." class="cursor-pointer" onclick="Delete(@item.Id)">
-                                <i class="btnDelete fa fa-fw fa-trash-o"></i>
-                            </a>*@
-                            <button onclick="Delete(@item.Id)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
+                            <button onclick="DeleteUser(@item.Id)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
                         </td>
                     </tr>
                 }
@@ -74,7 +68,7 @@
     </tbody>
 </table>
 <script type="text/javascript">
-    function Delete(id) {
+    function DeleteUser(id) {
         alert(id);
         $.ajax({
             type: "POST",
@@ -84,7 +78,7 @@
             }
         });
     };
-    function Create() {
+    function CreateUser() {
         var username = $('#txtUserName').val;
         var pas = $('#txtPassword').val;
         alert(pas);

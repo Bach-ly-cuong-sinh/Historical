@@ -22,18 +22,7 @@ namespace Historical.Controllers
             ViewBag.CountContact = c.cnn.Contacts.Where(co => co.IsActive.Equals(1)).Count();
             return View();
         }
-        public PartialViewResult ListUser()
-        {
-            try
-            {
-                var data = UserBusiness.ListUser();
-                return PartialView("ListUser", data);
-            }
-            catch
-            {
-                return PartialView("ListUser", null);
-            }
-        }
+        
         public PartialViewResult ListRelic()
         {
             try
@@ -46,6 +35,7 @@ namespace Historical.Controllers
                 return PartialView("ListPagoda", null);
             }
         }
+        // sử lý phần feedback
         public PartialViewResult ListFeedBack()
         {
             try
@@ -56,6 +46,34 @@ namespace Historical.Controllers
             catch
             {
                 return PartialView("ListFeedBack", null);
+            }
+        }
+        public PartialViewResult DeleteFeedBack(int Id)
+        {
+            try
+            {
+                var f = c.cnn.Feedbacks.Find(Id);
+                f.IsActive = 0;
+                c.cnn.SaveChanges();
+                var data = FeedBackBusiness.ListFeedBack();
+                return PartialView("ListFeedBack", data);
+            }
+            catch
+            {
+                return PartialView("ListFeedBack", null);
+            }
+        }
+        // sử lý user
+        public PartialViewResult ListUser()
+        {
+            try
+            {
+                var data = UserBusiness.ListUser();
+                return PartialView("ListUser", data);
+            }
+            catch
+            {
+                return PartialView("ListUser", null);
             }
         }
         public PartialViewResult DeleteUser(int Id)
@@ -82,5 +100,6 @@ namespace Historical.Controllers
                 return PartialView("ListUser", null);
             }
         }
+        
     }
 }
