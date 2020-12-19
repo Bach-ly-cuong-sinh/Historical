@@ -100,6 +100,20 @@ namespace Historical.Controllers
                 return PartialView("ListUser", null);
             }
         }
-        
+        public PartialViewResult DeletePagoda(int Id)
+        {
+            try
+            {
+                var f = c.cnn.Relics.Find(Id);
+                f.IsActive = 0;
+                c.cnn.SaveChanges();
+                var data = RelicsBusiness.ListRelic();
+                return PartialView("ListPagoda", data);
+            }
+            catch
+            {
+                return PartialView("ListPagoda", null);
+            }
+        }
     }
 }
