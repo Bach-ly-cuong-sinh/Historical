@@ -1,4 +1,5 @@
 ﻿using Historical.Business;
+using Historical.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace Historical.Controllers
         {
             try
             {
+                ViewBag.ListTopic = c.cnn.Categories.ToList();
                 var data = RelicsBusiness.ListRelic();
                 return PartialView("ListPagoda", data);
             }
@@ -92,7 +94,24 @@ namespace Historical.Controllers
         {
             try
             {
-                var data = UserBusiness.CreateUser(UserName, Password);
+                var check = c.cnn.Users.Where(u => u.Name.Equals(UserName)).FirstOrDefault();
+                if(check == null)
+                {
+                    var data = UserBusiness.CreateUser(UserName, Password);
+                    return PartialView("ListUser", data);
+                }
+                return PartialView("ListUser", this.ListUser());
+            }
+            catch
+            {
+                return PartialView("ListUser", null);
+            }
+        }
+        public PartialViewResult SuccessUser(int Id)
+        {
+            try
+            {
+                var data = UserBusiness.SuccessUser(Id);
                 return PartialView("ListUser", data);
             }
             catch
@@ -104,6 +123,7 @@ namespace Historical.Controllers
         {
             try
             {
+                ViewBag.ListTopic = c.cnn.Categories.ToList();
                 var f = c.cnn.Relics.Find(Id);
                 f.IsActive = 0;
                 c.cnn.SaveChanges();
@@ -112,6 +132,32 @@ namespace Historical.Controllers
             }
             catch
             {
+                ViewBag.ListTopic = c.cnn.Categories.ToList();
+                return PartialView("ListPagoda", null);
+            }
+        }
+        public PartialViewResult CreatePagoda(int CateID ,string Name ,string Address , string MapUrl ,string ImageUrl,string Content,string Title)
+        {
+            try
+            {
+                ViewBag.ListTopic = c.cnn.Categories.ToList();
+                Relic r = new Relic();
+                r.Name = Name;
+                r.Address = Address;
+                r.MapLinks = MapUrl;
+                r.ImageUrl = ImageUrl;
+                r.CateId = CateID;
+                r.CraetedDate = DateTime.Now;
+                r.IsActive = 1;
+                r.Content = Content;
+                r.Title = Title;
+                c.cnn.Add(r);
+                c.cnn.SaveChanges();
+                return PartialView("ListPagoda", this.ListRelic());
+            }
+            catch
+            {
+                ViewBag.ListTopic = c.cnn.Categories.ToList();
                 return PartialView("ListPagoda", null);
             }
         }

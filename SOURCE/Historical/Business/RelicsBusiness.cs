@@ -15,6 +15,7 @@ namespace Historical.Business
                 List<RelicsOutputModel> data = new List<RelicsOutputModel>();
                 var q = from r in cnn.Relics
                         where r.IsActive.Equals(1)
+                        orderby r.Id descending
                         select (new RelicsOutputModel()
                         {
                             CategoryID = r.Cate.Id,

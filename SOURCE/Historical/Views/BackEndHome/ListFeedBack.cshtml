@@ -2,58 +2,65 @@
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
 @model List<FeedBackOutputModel>
-<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
-    <thead style="text-align: center; background-color: #9C27B0; color: #ffffff;">
-    <th>ID</th>
-    <th>Content</th>
-    <th>Status</th>
-    <th>Relic ID</th>
-    <th>Relic Name</th>
-    <th>Created Date</th>
-    <th>Action</th>
-    </thead>
-    <tbody class="text-center" id="table-content">
-        @{
-            if (Model == null)
-            {
-                <tr>
-                    <td colspan="7">Không có dữ liệu.</td>
-                </tr>
-            }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td style="word-break:break-word; word-wrap:break-word; white-space:pre-line;">@item.Content</td>
-                        @{
-                            if (@item.IsActive == 1)
-                            {
-                                <td>Active</td>
-                            }
-                            else if (@item.IsActive == 0)
-                            {
-                                <td>Non Active</td>
-                            }
-                            else
-                            {
-                                <td></td>
-                            }
-
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
+                <thead style="text-align: center; background-color: #9C27B0; color: #ffffff;">
+                <th>ID</th>
+                <th>Content</th>
+                <th>Status</th>
+                <th>Relic ID</th>
+                <th>Relic Name</th>
+                <th>Created Date</th>
+                <th>Action</th>
+                </thead>
+                <tbody class="text-center" id="table-content">
+                    @{
+                        if (Model == null)
+                        {
+                            <tr>
+                                <td colspan="7">Không có dữ liệu.</td>
+                            </tr>
                         }
-                        <td>@item.RelicId</td>
-                        <td>@item.RelicName</td>
-                        <td>@item.CreateDateStr</td>
-                        <td>
-                            <button onclick="DeleteFeedback(@item.Id)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
-                        </td>
-                    </tr>
-                }
-            }
-        }
-    </tbody>
-</table>
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td style="word-break:break-word; word-wrap:break-word; white-space:pre-line;">@item.Content</td>
+                                    @{
+                                        if (@item.IsActive == 1)
+                                        {
+                                            <td>Active</td>
+                                        }
+                                        else if (@item.IsActive == 0)
+                                        {
+                                            <td>Non Active</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+                                    }
+                                    <td>@item.RelicId</td>
+                                    <td>@item.RelicName</td>
+                                    <td>@item.CreateDateStr</td>
+                                    <td>
+                                        <button onclick="DeleteFeedback(@item.Id)">xóa</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     function DeleteFeedback(id) {
         $.ajax({
@@ -61,7 +68,7 @@
             url: "/BackEndHome/DeleteFeedBack",
             data: { Id: id },
             success: function (res) {
-
+                $('#contentt').html(res);
             }
         });
     }

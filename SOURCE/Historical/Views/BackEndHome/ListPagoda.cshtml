@@ -2,49 +2,87 @@
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
 @model List<RelicsOutputModel>
-<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md"
-       style="overflow: auto;
-        max-height: calc(100vh - 100px);
-        display: inline-block">
-    <thead style="position: relative;">
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">ID</th>
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Category</th>
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Name</th>
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Address</th>
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Map Url</th>
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Image Url</th>
-    @*<th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Created Date</th>*@
-    <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Action</th>
-    </thead>
-    <tbody class="text-center" id="table-content">
-        @{
-            if (Model == null)
-            {
-                <tr>
-                    <td colspan="8">Không có dữ liệu.</td>
-                </tr>
-            }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="col-md-1">@item.RelicsID</td>
-                        <td class="col-md-2">@item.CategoryName</td>
-                        <td class="col-md-2">@item.RelicsName</td>
-                        <td class="col-md-2">@item.Address</td>
-                        <td class ="col-md-2"> @item.MapUrl</td>
-                        <td class="col-md-2">@item.ImageUrl</td>
-                        @*<td class="col-md-2">@item.CreatedDateStr</td>*@
-                        <td class="col-md-1">
-                            <button onclick="DeletePagoda(@item.RelicsID)">xóa</button>
-                        </td>
-                    </tr>
-                }
-            }
-        }
-    </tbody>
-</table>
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="container" style="margin-top:0px !important">
+                <div class="row">
+                    <div class="col-md-1">
+                        <select id="Toppicidpublic" class="form-control">
+                            <optgroup label="Danh mục">
+                                @foreach (var tp in ViewBag.ListTopic)
+                                {
+                                    <option value="@tp.Id ">@tp.Name</option>
+                                }
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <input class="form-control" placeholder="Name" id="txtName" />
+                    </div>
+                    <div class="col-md-1">
+                        <input class="form-control" placeholder="Address" id="txtAddress" />
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" placeholder="Map Url" id="txtMapUrl" />
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" placeholder="Image Url" id="txtImageUrl" />
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" placeholder="Content" id="txtContent" />
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" placeholder="Title" id="txtTitle" />
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-danger" onclick="CreatePagoda()"> Tạo mới</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md" style="overflow: auto;max-height: calc(100vh - 100px);display: inline-block">
+                <thead style="position: relative;">
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">ID</th>
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Category</th>
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Name</th>
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Address</th>
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Map Url</th>
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Image Url</th>
+                @*<th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Created Date</th>*@
+                <th style="position: sticky;top: -1px;opacity: 1;z-index: 1;text-align: center;background-color: #9C27B0;color: #ffffff;">Action</th>
+                </thead>
+                <tbody class="text-center" id="table-content">
+                    @{
+                        if (Model == null)
+                        {
+                            <tr>
+                                <td colspan="8">Không có dữ liệu.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="col-md-1">@item.RelicsID</td>
+                                    <td class="col-md-2">@item.CategoryName</td>
+                                    <td class="col-md-2">@item.RelicsName</td>
+                                    <td class="col-md-2">@item.Address</td>
+                                    <td class="col-md-2"> @item.MapUrl</td>
+                                    <td class="col-md-2">@item.ImageUrl</td>
+                                    @*<td class="col-md-2">@item.CreatedDateStr</td>*@
+                                    <td class="col-md-1">
+                                        <button onclick="DeletePagoda(@item.RelicsID)">xóa</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     function DeletePagoda(id) {
         $.ajax({
@@ -52,7 +90,30 @@
             url: "/BackEndHome/DeletePagoda",
             data: { Id: id },
             success: function (res) {
-
+                $('#contentt').html(res);
+            }
+        });
+    };
+    function CreatePagoda() {
+        var cateid = $("#Toppicidpublic").val();;
+        var name = $('#txtName').val();
+        var address = $('#txtAddress').val();
+        var mapurl = $('#txtMapUrl').val();
+        var imgalurl = $('#txtImageUrl').val();
+        var content = $('#txtContent').val();
+        var title = $('#txtTitle').val();
+        $.ajax({
+            type: "POST",
+            url: "/BackEndHome/CreatePagoda",
+            data: { CateID: cateid, Name: name, Address: address, MapUrl: mapurl, ImageUrl: imgalurl, Content: content, Title: title },
+            success: function (res) {
+                $('#txtName').val() = "";
+                $('#txtAddress').val() = "";
+                $('#txtMapUrl').val() = "";
+                $('#txtImageUrl').val() = "";
+                $('#txtContent').val() = "";
+                $('#txtTitle').val() = "";
+                $('#contentt').html(res);
             }
         });
     }

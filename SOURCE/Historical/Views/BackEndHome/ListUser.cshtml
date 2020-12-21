@@ -2,92 +2,123 @@
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
 @model List<UserOutputModel>
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="container" style="margin-top:0px !important">
+                <div class="row">
+                    <div class="col-md-5">
+                        <input class="form-control" placeholder="Tài khoản" id="txtUserName" />
+                    </div>
+                    <div class="col-md-5">
+                        <input class="form-control" placeholder="Mật khẩu" id="txtPassword" />
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" onclick="CreateUser()"> Tạo mới</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-5">
-            <input class="form-control" placeholder="Tài khoản" id="txtUserName" />
-        </div>
-        <div class="col-md-5">
-            <input class="form-control" placeholder="Mật khẩu" id="txtPassword" />
-        </div>
-        <div class="col-md-2">
-            <button class="btn btn-danger" onclick="CreateUser()"> Tạo mới</button>
+            <table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
+                <thead style="text-align: center; background-color: #9C27B0; color: #ffffff;">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>PassWord</th>
+                <th>Created Date</th>
+                <th>Action</th>
+                </thead>
+                <tbody class="text-center" id="table-content">
+                    @{
+                        if (Model == null)
+                        {
+                            <tr>
+                                <td colspan="6">Không có dữ liệu.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    @{
+                                        if (@item.IsActive == 1)
+                                        {
+                                            <td>Active</td>
+                                        }
+                                        else if (@item.IsActive == 0)
+                                        {
+                                            <td>Non Active</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+
+                                    }
+                                    <td>@item.Password</td>
+                                    <td>@item.CreatedDateStr</td>
+                                    <td>
+                                        @{
+                                            if (item.IsActive == 1)
+                                            {
+                                                <button onclick="DeleteUser(@item.Id)">Xóa</button>
+                                            }
+                                            else
+                                            {
+                                                <button onclick="SuccessUser(@item.Id)">Duyệt</button>
+                                            }
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<table class="table table-light table-bordered table-hover table-responsive-sm table-responsive-md">
-    <thead style="text-align: center; background-color: #9C27B0; color: #ffffff;">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>PassWord</th>
-        <th>Created Date</th>
-        <th>Action</th>
-    </thead>
-    <tbody class="text-center" id="table-content">
-        @{
-            if (Model == null)
-            {
-                <tr>
-                    <td colspan="6">Không có dữ liệu.</td>
-                </tr>
-            }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Name</td>
-                        @{
-                            if (@item.IsActive == 1)
-                            {
-                                <td>Active</td>
-                            }
-                            else if (@item.IsActive == 0)
-                            {
-                                <td>Non Active</td>
-                            }
-                            else
-                            {
-                                <td></td>
-                            }
-
-                        }
-                        <td>@item.Password</td>
-                        <td>@item.CreatedDateStr</td>
-                        <td>
-                            <button onclick="DeleteUser(@item.Id)">xóa <i class="btnDelete fa fa-fw fa-trash-o"></i></button>
-                        </td>
-                    </tr>
-                }
-            }
-        }
-    </tbody>
-</table>
 <script type="text/javascript">
     function DeleteUser(id) {
-        alert(id);
         $.ajax({
             type: "POST",
             url: "/BackEndHome/DeleteUser",
             data: { Id: id },
             success: function (res) {
+                $('#contentt').html(res);
             }
         });
     };
     function CreateUser() {
-        var username = $('#txtUserName').val;
-        var pas = $('#txtPassword').val;
-        alert(pas);
+        var username = $('#txtUserName').val();
+        var pas = $('#txtPassword').val();
         $.ajax({
             type: "POST",
-            url: "/BackEndHome/Create",
+            url: "/BackEndHome/CreateUser",
             data: { UserName: username, Password: pas },
             success: function (res) {
+                if (res == null) {
+                    alert('Tài khoản đã tồn tại !');
+                    location.reload();
+                } else {
+                    $('#contentt').html(res);
+                }                
             }
         });
-    }
+    };
+    function SuccessUser(id) {
+        $.ajax({
+            type: "POST",
+            url: "/BackEndHome/SuccessUser",
+            data: { Id: id },
+            success: function (res) {
+                $('#contentt').html(res);
+            }
+        });
+    };
 </script>

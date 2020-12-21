@@ -1,45 +1,51 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layoutbackend.cshtml";
 }
-<div class="span9">
+<div class="main-panel">
     <div class="content">
-        <div class="btn-controls">
-            <div class="btn-box-row row-fluid">
-                <a href="#" class="btn-box big span4">
-                    <i class=" icon-random"></i><b>@ViewBag.CountCategory</b>
-                    <p class="text-muted">
-                        Category
-                    </p>
-                </a>
-                <a href="#" class="btn-box big span4">
-                    <i class="icon-user"></i><b>@ViewBag.CountUser</b>
-                    <p class="text-muted">
-                        Users
-                    </p>
-                </a>
-                <a href="#" class="btn-box big span4">
-                    <i class="icon-money"></i><b>@ViewBag.CountRelics</b>
-                    <p class="text-muted">
-                        Contact
-                    </p>
-                </a>
-            </div>
-            <div class="btn-box-row row-fluid">
-                <div class="span8">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <a href="#" class="btn-box small span4">
-                                <i class="icon-envelope"></i>
-                                <b>@ViewBag.CountContact</b><p>Messages</p>
+        <div class="container-fluid">
+            <div class="span9">
+                <div class="content">
+                    <div class="btn-controls">
+                        <div class="btn-box-row row-fluid">
+                            <a href="#" class="btn-box big span4">
+                                <i class=" icon-random"></i><b>@ViewBag.CountCategory</b>
+                                <p class="text-muted">
+                                    Category
+                                </p>
                             </a>
-                            <a href="#" class="btn-box small span4">
-                                <i class="icon-bullhorn"><b>@ViewBag.CountFeedback</b></i><p>Social Feed</p>
+                            <a href="#" class="btn-box big span4">
+                                <i class="icon-user"></i><b>@ViewBag.CountUser</b>
+                                <p class="text-muted">
+                                    Users
+                                </p>
+                            </a>
+                            <a href="#" class="btn-box big span4">
+                                <i class="icon-money"></i><b>@ViewBag.CountRelics</b>
+                                <p class="text-muted">
+                                    Contact
+                                </p>
                             </a>
                         </div>
+                        <div class="btn-box-row row-fluid">
+                            <div class="span8">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <a href="#" class="btn-box small span4">
+                                            <i class="icon-envelope"></i>
+                                            <b>@ViewBag.CountContact</b><p>Messages</p>
+                                        </a>
+                                        <a href="#" class="btn-box small span4">
+                                            <i class="icon-bullhorn"><b>@ViewBag.CountFeedback</b></i><p>Social Feed</p>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

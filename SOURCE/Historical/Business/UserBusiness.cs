@@ -80,6 +80,23 @@ namespace Historical.Business
                 return this.ListUser();
             }
         }
+        public List<UserOutputModel> SuccessUser(int Id)
+        {
+            try
+            {
+                var user = cnn.Users.Find(Id);
+                if (user.IsActive.Equals(0))
+                {
+                    user.IsActive = 1;
+                    cnn.SaveChanges();
+                }
+                return this.ListUser();
+            }
+            catch
+            {
+                return this.ListUser();
+            }
+        }
         public List<UserOutputModel> CreateUser(string Name, string Password)
         {
             try
